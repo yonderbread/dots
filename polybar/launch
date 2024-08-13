@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Kill hanging polybars
+#polybar-msg cmd quit
+pkill -9 polybar
+
+polybar -c ~/.config/polybar/config
+

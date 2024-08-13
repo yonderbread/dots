@@ -1,0 +1,6 @@
+FG =   "#F2F4F8"
+BG =   "#161616"
+COL1 = "#78A9FF"
+COL2 = "#25BE6A"
+COL3 = "#EE5396"
+COL4 = "#08BDBA"
