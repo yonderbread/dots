@@ -16,6 +16,7 @@ cmd_terminal = "alacritty"
 cmd_browser = "qutebrowser"
 cmd_editor = "nvim"
 cmd_launcher = "rofi -show drun"
+cmd_screenshot = "flameshot gui"
 cmd_pactl = "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo"
 
 keys = [
@@ -59,6 +60,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(cmd_terminal), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(cmd_browser), desc="Launch browser"),
+    Key([mod], "p", lazy.spawn(cmd_screenshot), desc="Launch screenshot tool"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
