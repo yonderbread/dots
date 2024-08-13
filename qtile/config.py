@@ -13,31 +13,40 @@ mod = "mod4"
 
 # Commands
 cmd_terminal = "alacritty"
-cmd_browser  = "qutebrowser"
+cmd_browser = "qutebrowser"
 cmd_editor = "nvim"
 cmd_launcher = "rofi -show drun"
 cmd_pactl = "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo"
 
 keys = [
     # Switch between windows
-    Key([mod], "h",            lazy.layout.left(),          desc="Move focus to left"),
-    Key([mod], "l",            lazy.layout.right(),         desc="Move focus to right"),
-    Key([mod], "j",            lazy.layout.down(),          desc="Move focus down"),
-    Key([mod], "k",            lazy.layout.up(),            desc="Move focus up"),
-    Key([mod], "space",        lazy.layout.next(),          desc="Move window focus to other window"),
+    Key([mod], "h", lazy.layout.left(), desc="Move focus to left"),
+    Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
+    Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
+    Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h",   lazy.layout.shuffle_left(),  desc="Move window to the left"),
-    Key([mod, "shift"], "l",   lazy.layout.shuffle_right(), desc="Move window to the right"),
-    Key([mod, "shift"], "j",   lazy.layout.shuffle_down(),  desc="Move window down"),
-    Key([mod, "shift"], "k",   lazy.layout.shuffle_up(),    desc="Move window up"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
+    Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
+    Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n",            lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
@@ -59,22 +68,27 @@ keys = [
         lazy.window.toggle_fullscreen(),
         desc="Toggle fullscreen on the focused window",
     ),
-    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key(
+        [mod],
+        "t",
+        lazy.window.toggle_floating(),
+        desc="Toggle floating on the focused window",
+    ),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-
     # Volume control
-    Key([mod], "comma",   lazy.spawn(cmd_pactl + " -1%")),
-    Key([mod], "period",  lazy.spawn(cmd_pactl + " +1%")),
-
+    Key([mod], "comma", lazy.spawn(cmd_pactl + " -1%")),
+    Key([mod], "period", lazy.spawn(cmd_pactl + " +1%")),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod], "space", lazy.spawn(cmd_launcher))
+    Key([mod], "space", lazy.spawn(cmd_launcher)),
 ]
+
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~/.config/qtile/autostart')
+    home = os.path.expanduser("~/.config/qtile/autostart")
     subprocess.Popen([home])
+
 
 # Add key bindings to switch VTs in Wayland.
 # We can't check qtile.core.name in default config as it is loaded before qtile is started
@@ -117,12 +131,14 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(margin=6, 
-                   border_focus=[c.FG], 
-                   border_focus_stack=[c.FG],
-                   border_normal=[c.BG], 
-                   border_normal_stack=[c.BG], 
-                   border_width=3),
+    layout.Columns(
+        margin=6,
+        border_focus=[c.FG],
+        border_focus_stack=[c.FG],
+        border_normal=[c.BG],
+        border_normal_stack=[c.BG],
+        border_width=3,
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -155,8 +171,15 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
