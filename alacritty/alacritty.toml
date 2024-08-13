@@ -14,4 +14,4 @@ normal = { family = "Fura Code Nerd Font Mono", style = "Regular" }
 italic = { family = "Fura Code Nerd Font Mono", style = "Regular" }
 bold = { family = "Fura Code Nerd Font Mono", style = "Regular" }
 bold_italic = { family = "Fura Code Nerd Font Mono", style = "Regular" }
-size = 10
+size = 8 
