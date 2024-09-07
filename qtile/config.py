@@ -18,6 +18,7 @@ cmd_editor = "nvim"
 cmd_launcher = "rofi -show drun"
 cmd_screenshot = "flameshot gui"
 cmd_pactl = "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo"
+cmd_netman = "alacritty -e nmtui"
 
 keys = [
     # Switch between windows
@@ -80,6 +81,8 @@ keys = [
     # Volume control
     Key([mod], "comma", lazy.spawn(cmd_pactl + " -1%")),
     Key([mod], "period", lazy.spawn(cmd_pactl + " +1%")),
+    Key([mod], "slash", lazy.spawn(cmd_pactl + " 0%")),
+    Key([mod], "n", lazy.spawn(cmd_netman)),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod], "space", lazy.spawn(cmd_launcher)),
