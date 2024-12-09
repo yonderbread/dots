@@ -17,8 +17,8 @@ cmd_browser = "qutebrowser"
 cmd_editor = "nvim"
 cmd_launcher = "rofi -show drun"
 cmd_screenshot = "flameshot gui"
-cmd_pactl = "pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo"
-cmd_netman = "alacritty -e nmtui"
+cmd_pactl = "pactl set-sink-volume @DEFAULT_SINK@"
+cmd_netman = "alacritty -e nmtui-connect"
 
 keys = [
     # Switch between windows
